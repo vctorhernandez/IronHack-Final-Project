@@ -1,23 +1,35 @@
 <section>
     <h2>Items</h2>
 
-    <div *ngIf="error" class="error">{{ error }}</div>
+    <div *ngIf="error" class="card" style="border-color: var(--danger); color: var(--danger);"> {{ error }} </div>
 
     <ul class="list" *ngIf="items?.data?.length; else empty">
-        <li *ngFor="let it of items!.data">
-            <a [routerLink]="['/item', it.id]"><strong>{{ it.title }}</strong></a>
+        <li class="list-item" *ngFor="let it of items!.data">
+            <a [routerLink]="['/item', it.id]" style="text-decoration:none; color:inherit;">
+                <strong style="font-size:18px">{{ it.title }}</strong>
+            </a>
+            <div class="chips" *ngIf="it.tags?.length">
+                <span class="chip" *ngFor="let t of it.tags">#{{ t }}</span>
+            </div>
             <div class="meta">
-                <span *ngIf="it.tags?.length">#{{ it.tags.join(' #') }}</span>
-                <small>{{ it.updatedAt | date:'short' }}</small>
+                <small>Actualizado: {{ it.updatedAt | date:'short' }}</small>
+                <a [routerLink]="['/item', it.id]" class="btn btn-ghost">Ver</a>
             </div>
         </li>
     </ul>
 
-    <app-pagination [page]="items?.page || 1" [totalPages]="items?.totalPages || 1" (prev)="goto((items?.page || 1)-1)"
-        (next)="goto((items?.page || 1)+1)">
-    </app-pagination>
+    <div class="paginator" *ngIf="items">
+        <button class="btn" [disabled]="items.page<=1" (click)="goto(items.page-1)">Anterior</button>
+        <span class="pill">Página {{items.page}} / {{items.totalPages || 1}}</span>
+        <button class="btn" [disabled]="items.page>=items.totalPages" (click)="goto(items.page+1)">Siguiente</button>
+    </div>
 
     <ng-template #empty>
-        <p>No hay resultados.</p>
+        <div class="card">
+            <p class="m-0">No hay resultados.</p>
+            <div class="mt-2">
+                <a routerLink="/new" class="btn btn-primary">Crear tu primer item</a>
+            </div>
+        </div>
     </ng-template>
 </section>

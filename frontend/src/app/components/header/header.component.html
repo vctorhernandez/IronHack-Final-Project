@@ -1,11 +1,26 @@
-<header class="bar">
-  <a routerLink="/" class="brand">MyItems</a>
+<header class="topbar">
+  <a routerLink="/" class="brand" aria-label="Inicio">
+    <img src="assets/logo.svg" alt="MyItems" />
+  </a>
+
   <form (ngSubmit)="submit()" class="search">
-    <input [(ngModel)]="q" name="q" placeholder="Buscar por título o tags…" />
-    <button type="submit">Buscar</button>
+    <div class="search-input">
+      <input
+        [(ngModel)]="q"
+        name="q"
+        class="input clearable"
+        placeholder="Buscar por título o tags…"
+        (keydown.escape)="clear()" />
+      <button *ngIf="q" type="button" class="btn-clear" (click)="clear()" aria-label="Borrar búsqueda">×</button>
+    </div>
+    <button type="submit" class="btn">Buscar</button>
   </form>
-  <nav class="nav">
-    <a routerLink="/new" class="btn">Nuevo</a>
-    <button (click)="testHealth()" class="btn ghost">Probar conexión</button>
+
+  <nav class="flex items-center gap-2">
+    <a routerLink="/new" class="btn btn-primary">Nuevo</a>
+    <button (click)="testHealth()" class="btn btn-ghost">Probar conexión</button>
+    <button type="button" class="btn btn-ghost" (click)="toggleTheme()" aria-label="Cambiar tema">
+      {{ theme === 'dark' ? '🌙' : '☀️' }}
+    </button>
   </nav>
 </header>

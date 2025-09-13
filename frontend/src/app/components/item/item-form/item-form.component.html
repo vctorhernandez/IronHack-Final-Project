@@ -1,20 +1,26 @@
-<section>
-    <h2>{{ isEdit() ? 'Editar' : 'Nuevo' }} Item</h2>
+<section class="card">
+    <h2 class="m-0">{{ isEdit() ? 'Editar' : 'Nuevo' }} Item</h2>
 
-    <form (ngSubmit)="save()">
-        <label for="title">Título *</label>
-        <input id="title" [(ngModel)]="title" name="title" required />
+    <form class="form mt-2" (ngSubmit)="save()">
+        <div class="field">
+            <label for="title">Título *</label>
+            <input id="title" [(ngModel)]="title" name="title" required class="input" />
+        </div>
 
-        <label for="desc">Descripción</label>
-        <textarea id="desc" [(ngModel)]="description" name="description"></textarea>
+        <div class="field">
+            <label for="desc">Descripción</label>
+            <textarea id="desc" [(ngModel)]="description" name="description" class="input"></textarea>
+        </div>
 
-        <label for="tags">Tags (separadas por coma)</label>
-        <input id="tags" [(ngModel)]="tagsText" name="tags" placeholder="ej: angular, express" />
+        <div class="field">
+            <label for="tags">Tags (separadas por coma)</label>
+            <input id="tags" [(ngModel)]="tagsText" name="tags" class="input" placeholder="ej: angular, express" />
+        </div>
 
-        <div class="actions">
-            <button type="submit">{{ isEdit() ? 'Actualizar' : 'Crear' }}</button>
-            <a routerLink="/">Cancelar</a>
-            <button *ngIf="isEdit()" type="button" class="danger" (click)="remove()">Borrar</button>
+        <div class="flex gap-2">
+            <button type="submit" class="btn btn-primary">{{ isEdit() ? 'Actualizar' : 'Crear' }}</button>
+            <a routerLink="/" class="btn">Cancelar</a>
+            <button *ngIf="isEdit()" type="button" class="btn btn-danger" (click)="remove()">Borrar</button>
         </div>
     </form>
 </section>
