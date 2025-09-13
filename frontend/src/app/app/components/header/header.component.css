@@ -1,0 +1,7 @@
+.bar { display:flex; gap:12px; align-items:center; padding:10px; border-bottom:1px solid #e5e7eb; }
+.brand { font-weight:700; text-decoration:none; color:inherit; }
+.search { margin-left:auto; display:flex; gap:6px; }
+.nav { display:flex; gap:8px; }
+.btn { padding:6px 10px; border:1px solid #ddd; background:#fff; border-radius:6px; cursor:pointer; text-decoration:none; color:inherit; }
+.btn.ghost { background:transparent; }
+input { padding:6px 8px; border:1px solid #ddd; border-radius:6px; min-width:260px; }

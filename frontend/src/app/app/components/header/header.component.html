@@ -1,0 +1,11 @@
+<header class="bar">
+  <a routerLink="/" class="brand">MyItems</a>
+  <form (ngSubmit)="submit()" class="search">
+    <input [(ngModel)]="q" name="q" placeholder="Buscar por título o tags…" />
+    <button type="submit">Buscar</button>
+  </form>
+  <nav class="nav">
+    <a routerLink="/new" class="btn">Nuevo</a>
+    <button (click)="testHealth()" class="btn ghost">Probar conexión</button>
+  </nav>
+</header>
