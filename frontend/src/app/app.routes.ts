@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
-import { ItemListComponent } from './app/components/item/item-list/item-list.component';
-import { ItemDetailComponent } from './app/components/item/item-detail/item-detail.component';
-import { ItemFormComponent } from './app/components/item/item-form/item-form.component';
+import { ItemListComponent } from './components/item/item-list/item-list.component';
+import { ItemDetailComponent } from './components/item/item-detail/item-detail.component';
+import { ItemFormComponent } from './components/item/item-form/item-form.component';
 
 export const routes: Routes = [
   { path: '', component: ItemListComponent },

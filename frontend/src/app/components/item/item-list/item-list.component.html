@@ -1,0 +1,23 @@
+<section>
+    <h2>Items</h2>
+
+    <div *ngIf="error" class="error">{{ error }}</div>
+
+    <ul class="list" *ngIf="items?.data?.length; else empty">
+        <li *ngFor="let it of items!.data">
+            <a [routerLink]="['/item', it.id]"><strong>{{ it.title }}</strong></a>
+            <div class="meta">
+                <span *ngIf="it.tags?.length">#{{ it.tags.join(' #') }}</span>
+                <small>{{ it.updatedAt | date:'short' }}</small>
+            </div>
+        </li>
+    </ul>
+
+    <app-pagination [page]="items?.page || 1" [totalPages]="items?.totalPages || 1" (prev)="goto((items?.page || 1)-1)"
+        (next)="goto((items?.page || 1)+1)">
+    </app-pagination>
+
+    <ng-template #empty>
+        <p>No hay resultados.</p>
+    </ng-template>
+</section>

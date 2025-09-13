@@ -1,0 +1,24 @@
+<section *ngIf="!error; else err">
+    <ng-container *ngIf="item; else notFound">
+        <h2>{{ item.title }}</h2>
+        <p *ngIf="item.description">{{ item.description }}</p>
+        <p *ngIf="item.tags?.length">Tags: <code>#{{ item.tags.join(' #') }}</code></p>
+        <small>Creado: {{ item.createdAt | date:'short' }}</small><br>
+        <small>Actualizado: {{ item.updatedAt | date:'short' }}</small>
+
+        <div class="actions">
+            <a [routerLink]="['/edit', item.id]">Editar</a>
+            <a routerLink="/">Volver</a>
+        </div>
+    </ng-container>
+
+    <ng-template #notFound>
+        <p>No se encontró el item.</p>
+        <a routerLink="/">Volver</a>
+    </ng-template>
+</section>
+
+<ng-template #err>
+    <p class="error">{{ error }}</p>
+    <a routerLink="/">Volver</a>
+</ng-template>

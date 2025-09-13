@@ -1,0 +1,20 @@
+<section>
+    <h2>{{ isEdit() ? 'Editar' : 'Nuevo' }} Item</h2>
+
+    <form (ngSubmit)="save()">
+        <label for="title">Título *</label>
+        <input id="title" [(ngModel)]="title" name="title" required />
+
+        <label for="desc">Descripción</label>
+        <textarea id="desc" [(ngModel)]="description" name="description"></textarea>
+
+        <label for="tags">Tags (separadas por coma)</label>
+        <input id="tags" [(ngModel)]="tagsText" name="tags" placeholder="ej: angular, express" />
+
+        <div class="actions">
+            <button type="submit">{{ isEdit() ? 'Actualizar' : 'Crear' }}</button>
+            <a routerLink="/">Cancelar</a>
+            <button *ngIf="isEdit()" type="button" class="danger" (click)="remove()">Borrar</button>
+        </div>
+    </form>
+</section>
