@@ -10,14 +10,14 @@ import { ToastService } from './app/services/toast.service';
   standalone: true,
   imports: [CommonModule, RouterOutlet, HeaderComponent, SpinnerComponent],
   template: `
-    <app-header></app-header>
-    <main class="container">
-      <div *ngIf="toast.message$ | async as msg" class="toast">{{ msg }}</div>
-      <router-outlet></router-outlet>
-    </main>
-    <app-spinner></app-spinner>
-  `,
-  styles:[`
+  <app-header></app-header>
+  <main class="container">
+    <p style="margin:12px 0">App cargada ✅</p>
+    <router-outlet></router-outlet>
+  </main>
+  <app-spinner></app-spinner>
+`,
+  styles: [`
     .container{max-width:960px;margin:18px auto;padding:0 12px}
     .toast{position:fixed;right:12px;bottom:12px;background:#333;color:#fff;padding:10px 14px;border-radius:8px}
   `]

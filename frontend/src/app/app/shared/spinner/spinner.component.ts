@@ -1,6 +1,6 @@
-import { Component, computed, signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-// import { loading$ } from '../interceptors/loading.interceptor';
+import { loading$ } from '../../interceptors/loading.interceptor';
 
 @Component({
   selector: 'app-spinner',
@@ -11,5 +11,5 @@ import { CommonModule } from '@angular/common';
 })
 export class SpinnerComponent {
   loading = signal(false);
-//   private sub = loading$.subscribe(v => this.loading.set(v));
+  private sub = loading$.subscribe(v => this.loading.set(v));
 }

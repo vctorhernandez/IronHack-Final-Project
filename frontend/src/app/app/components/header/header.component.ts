@@ -24,9 +24,9 @@ export class HeaderComponent {
   }
 
   testHealth() {
-    // this.api.health().subscribe({
-    //   next: (r) => this.toast.show(r?.db === 'connected' ? 'Conexión abierta' : 'Sin conexión con la DB'),
-    //   error: () => this.toast.show('Sin conexión con la DB')
-    // });
+    this.api.health().subscribe({
+      next: (r) => this.toast.show(r?.db === 'connected' ? 'Conexión abierta' : 'Sin conexión con la DB'),
+      error: () => this.toast.show('Sin conexión con la DB')
+    });
   }
 }
